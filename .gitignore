@@ -19,3 +19,4 @@ obj/Debug/netcoreapp2.1/myservice.pdb
 obj/myservice.csproj.nuget.cache
 obj/myservice.csproj.nuget.g.props
 obj/project.assets.json
+*.cache
