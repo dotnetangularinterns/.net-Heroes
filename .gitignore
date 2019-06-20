@@ -20,3 +20,4 @@ obj/myservice.csproj.nuget.cache
 obj/myservice.csproj.nuget.g.props
 obj/project.assets.json
 *.cache
+*.cache
