@@ -1,9 +1,12 @@
 ﻿using myservice.models;
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using System.IO;
 
 public class HeroList
 {
+    private int lastId = 3;
     private static HeroList instance = null;
     List<Hero> heros = new List<Hero>();
     public HeroList()
@@ -19,6 +22,7 @@ public class HeroList
         if (instance == null)
         {
             instance = new HeroList();
+            instance.load();
         }
         return instance;
     }
@@ -26,6 +30,7 @@ public class HeroList
     public void addHero(Hero hero)
     {
         heros.Add(hero);
+        save();
     }
 
     public Hero getHero(int id) 
@@ -48,6 +53,7 @@ public class HeroList
                 heros[i] = hero;
             }
         }
+        save();
     }
 
     public void removeHero(int id)
@@ -63,6 +69,7 @@ public class HeroList
             }
         }
         heros.RemoveAt(l);
+        save();
     }
 
     public List<Hero> listHero()
@@ -72,6 +79,23 @@ public class HeroList
 
     public int genId() 
     {
-        return heros.Count + 1;
+        return lastId + 1;
+    }
+
+    public void save() 
+    {
+        string herosJson = JsonConvert.SerializeObject(heros.ToArray());
+        string dir = System.IO.Directory.GetCurrentDirectory();
+        System.IO.File.WriteAllText(dir + "\\data\\heros.json", herosJson);
+    }
+
+    public void load() 
+    {
+        string dir = System.IO.Directory.GetCurrentDirectory();
+        using (StreamReader reader = new StreamReader(dir + "\\data\\heros.json")) 
+        {
+            String herosJson = reader.ReadToEnd();
+            heros = JsonConvert.DeserializeObject<List<Hero>>(herosJson);
+        }
     }
 }
