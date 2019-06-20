@@ -52,14 +52,17 @@ public class HeroList
 
     public void removeHero(int id)
     {
+        int l = -1;
         for (int i = 0; i < heros.Count; i++)
         {
             Hero delete = heros[i];
             if (delete.Id == id)
             {
-                heros[i] = null;
+                l = i;
+                break;
             }
         }
+        heros.RemoveAt(l);
     }
 
     public List<Hero> listHero()
