@@ -6,15 +6,12 @@ using System.IO;
 
 public class HeroList
 {
-    private int lastId = 3;
+    private int lastId = 0;
     private static HeroList instance = null;
     List<Hero> heros = new List<Hero>();
     public HeroList()
 	{
-        heros.Add(new Hero { Id = 0, Name = "Chris", Pic = "https://making-the-web.com/sites/default/files/clipart/142014/stick-figure-142014-5551841.jpg", Power = 1.5 });
-        heros.Add(new Hero { Id = 1, Name = "Marcus", Pic = "https://image.shutterstock.com/image-vector/stick-figure-celebration-cheer-260nw-331595411.jpg", Power = 2 });
-        heros.Add(new Hero { Id = 2, Name = "Ashazi", Pic = "http://clipart-library.com/images/pio5eXK6T.png", Power = 3 });
-        heros.Add(new Hero { Id = 3, Name = "Pasha", Pic = "https://image.shutterstock.com/image-vector/stick-figure-business-ideas-260nw-220840597.jpg", Power = 4 });
+        
     }
 
     public static HeroList getInstance()
@@ -79,7 +76,8 @@ public class HeroList
 
     public int genId() 
     {
-        return lastId + 1;
+        lastId+= 1;
+        return lastId;
     }
 
     public void save() 
@@ -87,6 +85,8 @@ public class HeroList
         string herosJson = JsonConvert.SerializeObject(heros.ToArray());
         string dir = System.IO.Directory.GetCurrentDirectory();
         System.IO.File.WriteAllText(dir + "\\data\\heros.json", herosJson);
+
+        System.IO.File.WriteAllText(dir + "\\data\\count.txt", lastId.ToString());
     }
 
     public void load() 
@@ -96,6 +96,11 @@ public class HeroList
         {
             String herosJson = reader.ReadToEnd();
             heros = JsonConvert.DeserializeObject<List<Hero>>(herosJson);
+        }
+        using (StreamReader reader = new StreamReader(dir + "\\data\\count.txt")) 
+        {
+            String herosCount = reader.ReadToEnd();
+            lastId = Convert.ToInt32(herosCount);
         }
     }
 }
