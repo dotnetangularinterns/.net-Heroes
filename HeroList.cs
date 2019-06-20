@@ -28,6 +28,17 @@ public class HeroList
         heros.Add(hero);
     }
 
+    public Hero getHero(int id) 
+    {
+        Hero hero = null;
+        for (int i = 0; i < heros.Count; i++) {
+            if (heros[i].Id == id) {
+                hero = heros[i];
+            }
+        }
+        return hero;
+    }
+
     public void updateHero(Hero hero)
     {
         for(int i = 0; i< heros.Count; i++) {
@@ -56,7 +67,8 @@ public class HeroList
         return heros;
     }
 
-    public int genId() {
+    public int genId() 
+    {
         return heros.Count + 1;
     }
 }

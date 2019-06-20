@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Software_Dev\\DotNet\\HerosApi\\myservice.csproj": {}
+    "C:\\Software_Dev\\DotNet\\HeroesApi2\\.net-Heroes\\myservice.csproj": {}
   },
   "projects": {
-    "C:\\Software_Dev\\DotNet\\HerosApi\\myservice.csproj": {
+    "C:\\Software_Dev\\DotNet\\HeroesApi2\\.net-Heroes\\myservice.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Software_Dev\\DotNet\\HerosApi\\myservice.csproj",
+        "projectUniqueName": "C:\\Software_Dev\\DotNet\\HeroesApi2\\.net-Heroes\\myservice.csproj",
         "projectName": "myservice",
-        "projectPath": "C:\\Software_Dev\\DotNet\\HerosApi\\myservice.csproj",
+        "projectPath": "C:\\Software_Dev\\DotNet\\HeroesApi2\\.net-Heroes\\myservice.csproj",
         "packagesPath": "C:\\Users\\030587\\.nuget\\packages\\",
-        "outputPath": "C:\\Software_Dev\\DotNet\\HerosApi\\obj\\",
+        "outputPath": "C:\\Software_Dev\\DotNet\\HeroesApi2\\.net-Heroes\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -32,7 +32,8 @@ namespace myservice.Controllers
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-            return "value";
+            Hero hero = HeroList.getInstance().getHero(id);
+            return Json(hero);
         }
 
         // POST api/values
